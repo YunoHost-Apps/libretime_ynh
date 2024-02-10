@@ -1,0 +1,69 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "libretime"
+name = "Libretime"
+description.en = "Radio Broadcast & Automation Platform"
+description.fr = "Radio Broadcast & Automation Platform"
+
+version = "4.0.0~ynh1"
+
+maintainers = ["eric_G"]
+
+[upstream]
+license = "free"
+website = "https://libretime.org/"
+demo = "https://demo.example.com"
+admindoc = "https://libretime.org/docs/admin-manual/"
+code = "https://github.com/libretime/libretime"
+
+[integration]
+yunohost = ">= 11.2"
+architectures = "all"
+multi_instance = true
+
+ldap = false
+
+sso = false
+
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+
+    [resources.sources]
+
+    [resources.sources.main]
+    url = "https://github.com/libretime/libretime/releases/download/4.0.0/libretime-4.0.0.tar.gz"
+    sha256 = "18a23a33720d17919a8f60d31cda12fbeaec1c6f72e151cf7bbb77ee8778ce16"
+    autoupdate.strategy = "latest_github_tag"
+
+    [resources.system_user]
+    allow_email = true
+
+    [resources.install_dir]
+
+    [resources.data_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
+
+    [resources.apt]
+    packages = "postgresql"
+
+    [resources.database]
+    type = "postgresql"
