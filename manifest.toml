@@ -5,16 +5,15 @@ packaging_format = 2
 id = "libretime"
 name = "Libretime"
 description.en = "Radio Broadcast & Automation Platform"
-description.fr = "Radio Broadcast & Automation Platform"
+description.fr = "Plateforme de diffusion radio et d'automatisation"
 
 version = "4.0.0~ynh1"
 
 maintainers = ["eric_G"]
 
 [upstream]
-license = "free"
+license = "GPL-3.0-only"
 website = "https://libretime.org/"
-demo = "https://demo.example.com"
 admindoc = "https://libretime.org/docs/admin-manual/"
 code = "https://github.com/libretime/libretime"
 
