@@ -21,6 +21,8 @@ This is a dummy description of this app features
 
 **Shipped version:** 4.0.0~ynh1
 
+**Shipped version:** 4.0.0~ynh1
+
 ## Screenshots
 
 ![Screenshot of Libretime](./doc/screenshots/example.jpg)
