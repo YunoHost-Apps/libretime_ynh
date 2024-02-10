@@ -20,6 +20,7 @@ Ceci est une fausse description des fonctionalités de l'app
 
 
 **Version incluse :** 4.0.0~ynh1
+
 ## Captures d’écran
 
 ![Capture d’écran de Libretime](./doc/screenshots/example.jpg)
