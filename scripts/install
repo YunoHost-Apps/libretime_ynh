@@ -37,6 +37,23 @@ ynh_add_systemd_config
 yunohost service add "$app" --description="Radio Broadcast & Automation Platform" --log="/var/log/$app/$app.log"
 
 #=================================================
+# BUILDING LibreTime
+#=================================================
+ynh_script_progression --message="Building $app..." --weight=5
+
+pushd "$install_dir"
+	./install \
+	--user $app \
+	--storage-path $data_dir \
+  	--listen-port $port \
+  	--in-place \
+  	--no-setup-icecast \
+  	--no-setup-postgresql \
+	--no-setup-rabbitmq \
+  	https://$domain
+popd
+
+#=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 # ADD A CONFIGURATION
@@ -48,18 +65,9 @@ ynh_add_config --template="config.yml" --destination="$install_dir/config.yml"
 chmod 400 "$install_dir/config.yml"
 chown "$app:$app" "$install_dir/config.yml"
 
-#=================================================
-# BUILDING LibreTime
-#=================================================
-ynh_script_progression --message="Building $app..." --weight=5
+exec_warn_less ynh_exec_as $app libretime-api migrate
 
-pushd "$install_dir"
-	LIBRETIME_PACKAGES_EXCLUDES='liquidsoap' \
-	./install \
-  	--listen-port $port \
-  	--no-setup-postgresql \
-  	https://$domain
-popd
+adduser $app audio
 
 #=================================================
 # GENERIC FINALIZATION
@@ -67,6 +75,10 @@ popd
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
+
+systemctl start libretime.target
+
+systemctl --all --plain | grep libretime
 
 # Start a systemd service
 ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/$app.log"

@@ -38,7 +38,6 @@ ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 # Backup the systemd service unit
 ynh_backup --src_path="/etc/systemd/system/$app.service"
 
-
 #=================================================
 # BACKUP THE DATABASE
 #=================================================
