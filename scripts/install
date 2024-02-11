@@ -44,7 +44,7 @@ ynh_script_progression --message="Building $app..." --weight=5
 pushd "$install_dir"
 	./install \
 	--user $app \
-	--storage-path $data_dir
+	--storage-path $data_dir \
   	--listen-port $port \
   	--in-place \
   	--no-setup-icecast \
