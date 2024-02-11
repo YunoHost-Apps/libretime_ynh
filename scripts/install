@@ -34,19 +34,24 @@ ynh_add_nginx_config
 
 ynh_add_systemd_config
 
-yunohost service add "$app" --description="Radio Broadcast & Automation Platform" --log="/var/log/$app/$app.log"
+yunohost service add "$app" --description="Radio Broadcast & Automation Platform" --log="/var/log/$app/$app.log" --test_status
 
 #=================================================
 # BUILDING LibreTime
 #=================================================
 ynh_script_progression --message="Building $app..." --weight=5
 
+#pushd "$install_dir"
+#	./install \
+#  	--listen-port $port \
+#  	--no-setup-postgresql \
+#  	https://$domain
+#popd
+
 pushd "$install_dir"
-	./install \
-  	--listen-port $port \
-  	--no-setup-postgresql \
-  	https://$domain
+	./install -fiap
 popd
+
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -70,6 +75,10 @@ adduser $app audio
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
+
+systemctl start libretime.target
+
+systemctl --all --plain | grep libretime
 
 # Start a systemd service
 ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/$app.log"
