@@ -47,6 +47,8 @@ ynh_config_add_nginx
 #=================================================
 ynh_script_progression "Installing $app..."
 
+sed -i 's/debian-11/debian-12/g' $install_dir/install and sed -i 's/bullseye/bookworm/g' $install_dir/install
+
 pushd "$install_dir"
 	./install \
 		--listen-port $port \
