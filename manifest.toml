@@ -64,8 +64,11 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.ports]
+    main.default = 8080
     icecast.default = 8000
+    icecast2.default = 8443
     liquidsoap.default = 8001
+    liquidsoap2.default = 8002
 
 
     [resources.apt]

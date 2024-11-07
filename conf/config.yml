@@ -156,7 +156,7 @@ stream:
       mount: main
       # Listen port for the main harbor input.
       # > default is 8001
-      port: 8001
+      port: __PORT_LIQUIDSOAP__
       # Whether the input harbor is secured with the tls certificate.
       # > default is false
       secure: false
@@ -171,7 +171,7 @@ stream:
       mount: show
       # Listen port for the show harbor input.
       # > default is 8002
-      port: 8002
+      port: __PORT_LIQUIDSOAP2__ liquidsoap.default = 8001
       # Whether the input harbor is secured with the tls certificate.
       # > default is false
       secure: false
@@ -182,7 +182,7 @@ stream:
     # This can be reused to define multiple outputs without duplicating data
     .default_icecast_output: &default_icecast_output
       host: localhost
-      port: 8000
+      port: __PORT_ICECAST__
       source_password: hackme
       admin_password: hackme
       name: LibreTime!
@@ -222,7 +222,7 @@ stream:
         host: localhost
         # Icecast server port.
         # > default is 8000
-        port: 8000
+        port: __PORT_ICECAST__
         # Icecast server mount point.
         # > this field is REQUIRED
         mount: main
@@ -283,7 +283,7 @@ stream:
         host: localhost
         # Shoutcast server port.
         # > default is 8000
-        port: 8000
+        port: __PORT_ICECAST__
         # Shoutcast source user.
         # > default is source
         source_user: source
