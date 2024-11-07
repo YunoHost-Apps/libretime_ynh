@@ -49,10 +49,7 @@ ynh_script_progression "Installing $app..."
 
 pushd "$install_dir"
 	./install
-popd
-
-pushd "$install_dir"
- 	ynh_hide_warnings ynh_exec_as_app libretime-api migrate
+	ynh_hide_warnings ynh_exec_as_app libretime-api migrate
 popd
 
 #=================================================
@@ -62,7 +59,9 @@ ynh_script_progression "Adding $app's configuration files..."
 
 ynh_add_config --template="config.yml" --destination="$install_dir/config.yml"
 
-exec_warn_less ynh_exec_as_app $install_dir/libretime-api migrate
+pushd "$install_dir"
+	ynh_hide_warnings ynh_exec_as_app libretime-api migrate
+popd
 
 adduser $app audio
 
@@ -72,11 +71,9 @@ adduser $app audio
 ynh_script_progression "Starting $app's systemd service..."
 
 #ynh_systemctl --service="$app" --action="start"
-systemctl restart libretime.target
-
 systemctl start libretime.target
 
-systemctl --all --plain | grep libretime
+#systemctl --all --plain | grep libretime
 
 #=================================================
 # END OF SCRIPT
