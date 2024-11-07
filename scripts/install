@@ -61,7 +61,7 @@ popd
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
-ynh_add_config --template="config.yml" --destination="$install_dir/config.yml"
+ynh_add_config --template="config.yml" --destination="/etc/libretime/config.yml"
 
 pushd "$install_dir"
 	ynh_hide_warnings ynh_exec_as_app libretime-api migrate
