@@ -3,11 +3,11 @@
 packaging_format = 2
 
 id = "libretime"
-name = "Libretime"
+name = "LibreTime"
 description.en = "Radio Broadcast & Automation Platform"
 description.fr = "Plateforme de diffusion radio et d'automatisation"
 
-version = "4.0.0~ynh1"
+version = "4.2.0~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -18,12 +18,12 @@ admindoc = "https://libretime.org/docs/admin-manual/"
 code = "https://github.com/libretime/libretime"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 11.2.30"
+helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "50M"
@@ -43,8 +43,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/libretime/libretime/releases/download/4.0.0/libretime-4.0.0.tar.gz"
-    sha256 = "18a23a33720d17919a8f60d31cda12fbeaec1c6f72e151cf7bbb77ee8778ce16"
+    url = "https://github.com/libretime/libretime/releases/download/4.2.0/libretime-4.2.0.tar.gz"
+    sha256 = "b837bd73837e6601c0d893403e2b5bb21b6a704f5e6a6efe6fa98c46c58f4ba7"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
@@ -60,7 +60,7 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "postgresql"
+    packages = "postgresql, php8.3-fpm"
 
     [resources.database]
     type = "postgresql"

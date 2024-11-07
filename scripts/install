@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
@@ -13,77 +7,96 @@ source /usr/share/yunohost/helpers
 # INITIALIZE AND STORE SETTINGS
 #=================================================
 
+key=$(ynh_string_random --length=32)
+ynh_app_setting_set --app=$app --key=key --value=$key
 
-#=================================================
-# APP "BUILD" (DEPLOYING SOURCES, VENV, COMPILING ETC)
+api_key=$(ynh_string_random --length=32)
+ynh_app_setting_set --app=$app --key=api_key --value=$api_key
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
 chown -R "$app:www-data" "$install_dir"
 
 #=================================================
+# APP INITIAL CONFIGURATION
+#=================================================
+ynh_script_progression "Adding $app's configuration files..."
+
+ynh_add_config --template="config.yml" --destination="$install_dir/config.yml"
+ynh_config_add --template=".env" --destination="$install_dir/.env"
+
+#=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_add_nginx_config
+ynh_config_add_phpfpm
 
-ynh_add_systemd_config
+ynh_config_add_nginx
 
-yunohost service add "$app" --description="Radio Broadcast & Automation Platform" --log="/var/log/$app/$app.log"
+#ynh_config_add_systemd
+
+#yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
 
 #=================================================
-# BUILDING LibreTime
+# INSTALL LIBRETIME
 #=================================================
-ynh_script_progression --message="Building $app..." --weight=5
+ynh_script_progression "Installing the app..."
+
+# pushd "$install_dir"
+#  	LIBRETIME_PACKAGES_EXCLUDES='liquidsoap' \
+# 	./install \
+#   	--listen-port $port \
+#   	--storage-path $data_dir \
+#   	--in-place \
+#   	--no-setup-icecast \
+#   	--no-setup-postgresql \
+#   	--no-setup-rabbitmq
+#   	https://$domain
+# popd
 
 pushd "$install_dir"
 	./install \
-	--user $app \
-	--storage-path $data_dir \
   	--listen-port $port \
+  	--storage-path $data_dir \
   	--in-place \
-  	--no-setup-icecast \
-  	--no-setup-postgresql \
-	--no-setup-rabbitmq \
   	https://$domain
+popd
+
+pushd "$install_dir"
+ 	ynh_hide_warnings ynh_exec_as_app libretime-api migrate
 popd
 
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-# ADD A CONFIGURATION
-#=================================================
-ynh_script_progression --message="Adding a configuration file..." --weight=1
+ynh_script_progression "Adding $app's configuration files..."
 
 ynh_add_config --template="config.yml" --destination="$install_dir/config.yml"
 
-chmod 400 "$install_dir/config.yml"
-chown "$app:$app" "$install_dir/config.yml"
-
-exec_warn_less ynh_exec_as $app libretime-api migrate
+exec_warn_less ynh_exec_as_app libretime-api migrate
 
 adduser $app audio
 
 #=================================================
-# GENERIC FINALIZATION
-#=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression "Starting $app's systemd service..."
+
+#ynh_systemctl --service="$app" --action="start"
+systemctl restart libretime.target
 
 systemctl start libretime.target
 
 systemctl --all --plain | grep libretime
 
-# Start a systemd service
-ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/$app.log"
-
 #=================================================
 # END OF SCRIPT
 #=================================================
-ynh_script_progression --message="Installation of $app completed" --last
+
+ynh_script_progression "Installation of $app completed"
