@@ -20,7 +20,7 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
-#ynh_replace --match="debian-11)    is_debian=true && distro="bullseye" ;;" --replace="debian-12)    is_debian=true && distro="bookworm" ;;" --file=$install_dir/install
+ynh_replace --match="debian-11)    is_debian=true && distro="bullseye" ;;" --replace="debian-12)    is_debian=true && distro="bookworm" ;;" --file=$install_dir/install
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -48,7 +48,7 @@ ynh_config_add_nginx
 ynh_script_progression "Installing $app..."
 
 pushd "$install_dir"
-	sed -i 's/debian-11/debian-12/g' install and sed -i 's/bullseye/bookworm/g' install
+	#sed -i 's/debian-11/debian-12/g' install and sed -i 's/bullseye/bookworm/g' install
 
 	./install \
 		--listen-port $port \
