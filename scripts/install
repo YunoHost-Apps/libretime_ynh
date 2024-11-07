@@ -48,11 +48,7 @@ ynh_config_add_nginx
 ynh_script_progression "Installing $app..."
 
 pushd "$install_dir"
-	./install \
-  	--listen-port $port \
-  	--storage-path $data_dir \
-  	--in-place \
-  	https://$domain
+	./install
 popd
 
 pushd "$install_dir"
