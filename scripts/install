@@ -20,14 +20,13 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
-chown -R "$app:www-data" "$install_dir"
+#chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
-ynh_add_config --template="config.yml" --destination="$install_dir/config.yml"
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
@@ -46,19 +45,7 @@ ynh_config_add_nginx
 #=================================================
 # INSTALL LIBRETIME
 #=================================================
-ynh_script_progression "Installing the app..."
-
-# pushd "$install_dir"
-#  	LIBRETIME_PACKAGES_EXCLUDES='liquidsoap' \
-# 	./install \
-#   	--listen-port $port \
-#   	--storage-path $data_dir \
-#   	--in-place \
-#   	--no-setup-icecast \
-#   	--no-setup-postgresql \
-#   	--no-setup-rabbitmq
-#   	https://$domain
-# popd
+ynh_script_progression "Installing $app..."
 
 pushd "$install_dir"
 	./install \
@@ -79,7 +66,7 @@ ynh_script_progression "Adding $app's configuration files..."
 
 ynh_add_config --template="config.yml" --destination="$install_dir/config.yml"
 
-exec_warn_less ynh_exec_as_app libretime-api migrate
+exec_warn_less ynh_exec_as_app $install_dir/libretime-api migrate
 
 adduser $app audio
 

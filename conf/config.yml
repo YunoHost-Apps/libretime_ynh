@@ -3,13 +3,13 @@
 general:
   # The public url.
   # > this field is REQUIRED
-  public_url:
+  public_url: https://__DOMAIN__
   # The internal API authentication key.
   # > this field is REQUIRED
-  api_key:
+  api_key: __API_KEY__
   # The Django API secret key.
   # > this field is REQUIRED
-  secret_key:
+  secret_key: __KEY__
 
   # List of origins allowed to access resources on the server, the public url
   # origin is automatically included.
@@ -19,7 +19,7 @@ general:
   # The server timezone, should be a lookup key in the IANA time zone database,
   # for example Europe/Berlin.
   # > default is UTC
-  timezone: UTC
+  timezone: __TIMEZONE__
 
   # How many hours ahead Playout should cache scheduled media files.
   # > default is 1
@@ -34,7 +34,7 @@ storage:
   # Path of the storage directory. Make sure to update the Nginx configuration after
   # updating the storage path.
   # > default is /srv/libretime
-  path: /srv/libretime
+  path: __DATA_DIR__
 
 database:
   # The hostname of the PostgreSQL server.
@@ -73,7 +73,7 @@ rabbitmq:
 email:
   # Sender email address to use when sending emails.
   # > default is no-reply@libretime.org
-  from_address: no-reply@__DOMAIN__
+  from_address: no-reply@__MAIN_DOMAIN__
 
   # The hostname of the SMTP server.
   # > default is localhost
@@ -196,19 +196,20 @@ stream:
       # The default Icecast output stream
       - <<: *default_icecast_output
         enabled: true
-        public_url:
-        mount: main
+        public_url: https://__DOMAIN__/main.ogg
+        mount: main.ogg
         audio:
           format: ogg
           bitrate: 256
 
       # You can define extra outputs by reusing the default output using a yaml anchor
       - <<: *default_icecast_output
-        enabled: false
-        mount: main-low
+        enabled: true
+        public_url: https://__DOMAIN__/main.mp3
+        mount: main.mp3
         audio:
-          format: ogg
-          bitrate: 128
+          format: mp3
+          bitrate: 320
 
       - # Whether the output is enabled.
         # > default is false
