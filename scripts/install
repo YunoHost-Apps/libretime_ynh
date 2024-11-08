@@ -51,6 +51,7 @@ pushd "$install_dir"
 	./install \
 		--listen-port $port \
 		--storage-path $data_dir \
+		--allow-remove-essential \
 		--in-place \
 	   	--no-setup-postgresql \
    		https://$domain
