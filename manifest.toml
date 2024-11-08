@@ -51,6 +51,7 @@ ram.runtime = "50M"
     [resources.sources.main]
     url = "https://github.com/libretime/libretime/releases/download/4.2.0/libretime-4.2.0.tar.gz"
     sha256 = "b837bd73837e6601c0d893403e2b5bb21b6a704f5e6a6efe6fa98c46c58f4ba7"
+    
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
