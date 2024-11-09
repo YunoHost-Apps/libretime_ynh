@@ -46,7 +46,7 @@ ynh_config_add_nginx
 ynh_script_progression "Installing $app..."
 
 pushd "$install_dir"
-	./install
+	./install --allow-remove-essential
 popd
 
 #=================================================
