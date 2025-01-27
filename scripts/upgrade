@@ -17,17 +17,12 @@ ynh_script_progression "Upgrading source files..."
 
 ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env"
 
-chown -R "$app:www-data" "$install_dir"
-
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-ynh_config_add --template="some_config_file" --destination="$install_dir/some_config_file"
-
-chmod 400 "$install_dir/some_config_file"
-chown "$app:$app" "$install_dir/some_config_file"
+ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -41,10 +36,6 @@ ynh_config_add_nginx
 ynh_config_add_systemd
 
 #yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
-
-ynh_config_add_logrotate
-
-ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
 
 #=================================================
 # START SYSTEMD SERVICE
