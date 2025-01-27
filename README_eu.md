@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # LibreTime YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/libretime.svg)](https://ci-apps.yunohost.org/ci/apps/libretime/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/libretime.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/libretime.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/libretime)](https://ci-apps.yunohost.org/ci/apps/libretime/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/libretime)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/libretime)
 
 [![Instalatu LibreTime YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=libretime)
 

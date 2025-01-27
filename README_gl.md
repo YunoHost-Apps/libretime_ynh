@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # LibreTime para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/libretime.svg)](https://ci-apps.yunohost.org/ci/apps/libretime/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/libretime.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/libretime.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/libretime)](https://ci-apps.yunohost.org/ci/apps/libretime/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/libretime)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/libretime)
 
 [![Instalar LibreTime con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=libretime)
 

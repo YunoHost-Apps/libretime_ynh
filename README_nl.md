@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # LibreTime voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/libretime.svg)](https://ci-apps.yunohost.org/ci/apps/libretime/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/libretime.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/libretime.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/libretime)](https://ci-apps.yunohost.org/ci/apps/libretime/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/libretime)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/libretime)
 
 [![LibreTime met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=libretime)
 
