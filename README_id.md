@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # LibreTime untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/libretime.svg)](https://ci-apps.yunohost.org/ci/apps/libretime/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/libretime.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/libretime.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/libretime)](https://ci-apps.yunohost.org/ci/apps/libretime/)
+![Status kerja](https://apps.yunohost.org/badge/state/libretime)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/libretime)
 
 [![Pasang LibreTime dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=libretime)
 

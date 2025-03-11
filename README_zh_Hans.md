@@ -5,7 +5,9 @@
 
 # YunoHost 上的 LibreTime
 
-[![集成程度](https://dash.yunohost.org/integration/libretime.svg)](https://ci-apps.yunohost.org/ci/apps/libretime/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/libretime.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/libretime.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/libretime)](https://ci-apps.yunohost.org/ci/apps/libretime/)
+![工作状态](https://apps.yunohost.org/badge/state/libretime)
+![维护状态](https://apps.yunohost.org/badge/maintained/libretime)
 
 [![使用 YunoHost 安装 LibreTime](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=libretime)
 

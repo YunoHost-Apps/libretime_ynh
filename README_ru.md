@@ -5,7 +5,9 @@
 
 # LibreTime для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/libretime.svg)](https://ci-apps.yunohost.org/ci/apps/libretime/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/libretime.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/libretime.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/libretime)](https://ci-apps.yunohost.org/ci/apps/libretime/)
+![Состояние работы](https://apps.yunohost.org/badge/state/libretime)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/libretime)
 
 [![Установите LibreTime с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=libretime)
 

@@ -20,12 +20,10 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
-#ynh_replace --match="debian-11)    is_debian=true && distro="bullseye" ;;" --replace="debian-12)    is_debian=true && distro="bookworm" ;;" --file=$install_dir/install
-
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression "Adding $app's configuration files..."
+#ynh_script_progression "Adding $app's configuration files..."
 
 #ynh_config_add --template=".env" --destination="$install_dir/.env"
 
@@ -49,11 +47,14 @@ ynh_script_progression "Installing $app..."
 
 pushd "$install_dir"
 	./install \
-		--listen-port $port \
-		--storage-path $data_dir \
-		--in-place \
-	   	--no-setup-postgresql \
-   		https://$domain
+	--listen-port $port \
+	--storage-path $data_dir \
+	--in-place \
+	--no-setup-icecast \
+	--no-setup-postgresql \
+	--no-setup-rabbitmq \
+	--allow-remove-essential \
+	https://$domain
 popd
 
 #=================================================

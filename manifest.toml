@@ -18,7 +18,7 @@ admindoc = "https://libretime.org/docs/admin-manual/"
 code = "https://github.com/libretime/libretime"
 
 [integration]
-yunohost = ">= 11.2.30"
+yunohost = ">= 12.0.9"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -51,6 +51,7 @@ ram.runtime = "50M"
     [resources.sources.main]
     url = "https://github.com/libretime/libretime/releases/download/4.2.0/libretime-4.2.0.tar.gz"
     sha256 = "b837bd73837e6601c0d893403e2b5bb21b6a704f5e6a6efe6fa98c46c58f4ba7"
+    
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
