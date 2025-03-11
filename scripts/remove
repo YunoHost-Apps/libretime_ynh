@@ -7,7 +7,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 # REMOVE SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Removing system configurations related to $app..." --weight=1
+ynh_script_progression "Removing system configurations related to $app..."
 
 if ynh_exec_warn_less yunohost service status "$app" >/dev/null; then
     yunohost service remove "$app"
